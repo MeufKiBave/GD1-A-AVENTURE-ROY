@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <title>Catch</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        class MenuGame extends Phaser.Scene {
+
+            constructor() {
+                super("MenuGame");
+                //super();
+                /*this.data = {};
+            }
+
+            init() {
+                this.data = {
+                    r: -0.05,
+                    x: 800,
+                    y: 450,
+                }*/
+            }
+
+            preload() {
+                //this.load.image('cat_right_left', 'asset/cat_right_left.png');
+                this.load.image('cat_diago', 'asset/cat_diago.png');
+                //this.load.image('cat_stop', 'asset/cat_stop.png');
+                //this.load.image('cat_up_down','asset/cat_up_down.png');
+                this.load.image("Chapo", "asset/Chapo.png");
+                //this.load.setPath('assets/menudos/');
+                //this.load.atlas('animenu');
+                /*this.load.path = 'asset/menudos/';
+
+                this.load.image('catch1', "catch1.png");
+                this.load.image('catch2', "catch1.png");
+                this.load.image('catch3', "catch1.png");
+                this.load.image('catch4', "catch1.png");
+                this.load.image('catch5', "catch1.png");
+                this.load.image('catch6', "catch1.png");
+                this.load.image('catch7', "catch1.png");
+                this.load.image('catch8', "catch1.png");
+                this.load.image('catch9', "catch1.png");
+                this.load.image('catch10', "catch1.png");
+                this.load.image('catch11', "catch1.png");
+                this.load.image('catch12', "catch1.png");
+                this.load.image('catch13', "catch1.png");
+                this.load.image('catch14', "catch1.png");
+                this.load.image('catch15', "catch1.png");
+                this.load.image('catch16', "catch1.png");
+                this.load.image('catch17', "catch1.png");
+                this.load.image('catch18', "catch1.png");
+                this.load.image('catch19', "catch1.png");
+                this.load.image('catch20', "catch1.png");
+                this.load.image('catch21', "catch1.png");
+                this.load.image('catch22', "catch1.png");
+                this.load.image('catch23', "catch1.png");
+                this.load.image('catch24', "catch1.png");
+                this.load.image('catch25', "catch1.png");
+                this.load.image('catch26', "catch1.png");
+                this.load.image('catch27', "catch1.png");*/
+
+                this.load.image("BoutonPlay", "asset/BoutonPlay.png");
+                //this.load.image("BoutonPlayon", "asset/BoutonPlayon.png");
+
+            }
+            create() {
+                this.add.image(0, 0, "Chapo").setOrigin(0, 0).setScale(1, 1);
+
+                /*this.anims.create({
+                    key: 'animenu',
+                    frames: [
+                        { key: 'catch1' },
+                        { key: 'catch2' },
+                        { key: 'catch3' },
+                        { key: 'catch4' },
+                        { key: 'catch5' },
+                        { key: 'catch6' },
+                        { key: 'catch7' },
+                        { key: 'catch8' },
+                        { key: 'catch9' },
+                        { key: 'catch10' },
+                        { key: 'catch11' },
+                        { key: 'catch12' },
+                        { key: 'catch13' },
+                        { key: 'catch14' },
+                        { key: 'catch15' },
+                        { key: 'catch16' },
+                        { key: 'catch17' },
+                        { key: 'catch18' },
+                        { key: 'catch19' },
+                        { key: 'catch20' },
+                        { key: 'catch21' },
+                        { key: 'catch22' },
+                        { key: 'catch23' },
+                        { key: 'catch24' },
+                        { key: 'catch25' },
+                        { key: 'catch26' },
+                        { key: 'catch27', duration: 50 }
+                    ],
+                    frameRate: 8,
+                    repeat: -1
+                });
+                this.add.sprite(800,450,'catch1')
+                .play('animenu');*/
+                
+
+                /*var frames = [];
+    
+                const animenu = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+                for (var i = 1; i <= 28; i++)
+    
+                    this.anims.create({
+                        key: 'start',
+                        frames: frames,
+                        repeat: -1
+                    });
+    
+    
+                this.group = this.add.group();
+    
+                this.group.createMultiple({ key: 'animenu', repeat: 10, setXY: { x: 800, y: 450 }, setAlpha: { value: 0, step: 0.05 } });
+    
+                this.group.playAnimation('start');
+    
+                this.tweens.add({
+                    targets: this.data,
+                    duration: 3000,
+                    ease: 'Sine.easeInOut',
+                    yoyo: true,
+                    repeat: -1,
+                    props: {
+                        r: {
+                            value: 0.05
+                        },
+                        s: {
+                            value: 0.0012
+                        },
+                        y: {
+                            value: 400,
+                            duration: 4000
+                        }
+                    }
+                });*/
+
+                this.bouton = this.add.image(800, 510, "BoutonPlay").setInteractive().setScale(0.1)
+                this.bouton.on("pointerdown", this.launchgame, this);
+
+
+            }
+            update() {
+                console.log("blip")
+            }
+
+            launchgame() {
+                this.scene.start("Forestgame")
+            }
+        }
+
+        class Forestgame extends Phaser.Scene {
+            constructor() {
+                super("Forestgame")
+            }
+
+
+            //Asset//
+            preload() {
+                //Chargement du cat
+                /*this.load.spritesheet('cat_right_left', 'asset/cat_right_left.png',
+                {
+                    frameWidth: 38, frameHeight: 64
+                });
+                this.load.spritesheet('cat_up_down','asset/cat_up_down.png',
+                {
+                    frameWidth: 53, frameHeight: 14
+                });*/
+
+                this.load.spritesheet('cat_diago','asset/cat_diago.png',
+                {
+                    frameWidth: 38, frameHeight: 57
+                })
+                /*this.load.spritesheet('cat_stop', 'asset/cat_stop.png',
+                {
+                    frameWidth: 53, frameHeight: 45
+                });*/
+
+                //   this.load.image("background_1","asset/Background_1.bmp")
+                //   this.load.image("background","asset/Background.bmp")
+                this.load.image("Jeutuileforest", "Foret/Jeutuileforest.png");
+                this.load.tilemapTiledJSON("mapcat", "Foret/mapcat.json");
+            }
+
+            create() {
+                // Affiche la map
+                const carteDuNiveau = this.add.tilemap("mapcat");
+
+                //Carte tuile
+                const tileforest = carteDuNiveau.addTilesetImage(
+                    "tileforest",
+                    "Jeutuileforest");
+
+                const floorforest = carteDuNiveau.createLayer(
+                    "floorforest",
+                    tileforest,
+                );
+
+                const floorcliff_forest = carteDuNiveau.createLayer(
+                    "floorcliff_forest",
+                    tileforest,
+                );
+
+                const bush_forest = carteDuNiveau.createLayer(
+                    "bush_forest",
+                    tileforest,
+                );
+
+                const lake_forest = carteDuNiveau.createLayer(
+                    "lake_forest",
+                    tileforest,
+                );
+
+                const trunk_forest = carteDuNiveau.createLayer(
+                    "trunk_forest",
+                    tileforest,
+                );
+
+                const flooranim_forest = carteDuNiveau.createLayer(
+                    "flooranim_forest",
+                    tileforest,
+                );
+
+                const leaf_forest = carteDuNiveau.createLayer(
+                    "leaf_forest",
+                    tileforest,
+                );
+
+                const wisard_forest = carteDuNiveau.createLayer(
+                    "wisard_forest",
+                    tileforest,
+                );
+
+                const cliff_forest = carteDuNiveau.createLayer(
+                    "cliff_forest",
+                    tileforest,
+                );
+
+                const floorclif_forest = carteDuNiveau.createLayer(
+                    "floorclif_forest",
+                    tileforest,
+                );
+
+                const stair_forest = carteDuNiveau.createLayer(
+                    "stair_forest",
+                    tileforest,
+                );
+
+                this.cursors = this.input.keyboard.createCursorKeys();
+                this.player = this.physics.add.sprite(100, 10, 'cat_diago');
+                this.player.setCollideWorldBounds(true);
+                this.player.body.setMaxSpeed(300); //pour reguler la vitesse diago
+
+                this.cameras.main.setSize(2560, 1920);
+                /*this.physics.world.setBounds(0, 0, 2560, 1920);
+                
+                this.cameras.main.startFollow(this.player);
+                this.cameras.main.setZoom(1.5);*/
+
+
+                //attribue a la variable cursors la / les touches appuyé
+                this.cursors = this.input.keyboard.createCursorKeys();
+
+                /*créer l'animation selon la touche definie dans le key.*/
+                this.anims.create({
+                    key: 'left',
+                    //frames: this.anims.generateFrameNumbers('cat_right_left', { start: 0, end: 4 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'right',
+                    //frames: this.anims.generateFrameNumbers('cat_right_left', { start: 5, end: 9 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'down',
+                    //frames: this.anims.generateFrameNumbers('cat_up_down', { start: 5, end: 9 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'up',
+                    //frames: this.anims.generateFrameNumbers('cat_up_down', { start: 0, end: 4 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'up_right',
+                    frames: this.anims.generateFrameNumbers('cat_diago', { start: 15, end: 19 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'up_left',
+                    frames: this.anims.generateFrameNumbers('cat_diago', { start: 10, end: 14 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'down_right',
+                    frames: this.anims.generateFrameNumbers('cat_diago', { start: 0, end: 4 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                this.anims.create({
+                    key: 'down_left',
+                    frames: this.anims.generateFrameNumbers('cat_diago', { start: 5, end: 9 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+                /*this.anims.create({
+                    key: 'stop',
+                    frames: [{ key: 'cat_stop', frame: 4 }],
+                    frameRate: 20
+                });*/
+            }
+
+            update() {
+                //this.player.body.velocity.normalise().scale(300) teste de regu diago
+
+                if (this.cursors.left.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(-300)
+                }
+
+
+                else if (this.cursors.left.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(-300)
+                }
+
+                /*permet de créer la vérification des instances de l'objet cursors*/
+                else if (this.cursors.left.isDown) {
+                    this.player.setVelocityX(-300);
+                    //this.player.setFlipX(false);
+                    this.player.setVelocityY(0);
+
+                } else if (this.cursors.right.isDown) {
+                    this.player.setVelocityX(300);
+                    //this.player.setFlipX(true);
+                    this.player.setVelocityY(0);
+
+
+                } else if (this.cursors.up.isDown) {
+                    this.player.setVelocityY(-300);
+                    this.player.setVelocityX(0);
+
+
+                } else if (this.cursors.down.isDown) {
+                    this.player.setVelocityY(300);
+                    this.player.setVelocityX(0);
+                }
+                else {
+                    //this.player.anims.play('stop', true);
+                    this.player.setVelocityX(0);
+                    this.player.setVelocityY(0);
+
+                }
+
+            }
+        }
+
+        var config = {
+            type: Phaser.AUTO,
+            width: 1600, height: 900,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: false },
+                    debug: true,
+                }
+            },
+
+            pixelArt: true,
+            //appel les class Super
+            scene: [MenuGame, Forestgame]
+        };
+
+
+        new Phaser.Game(config);
+    </script>
+</body>
+
+</html>
