@@ -113,7 +113,7 @@
                 });
                 this.add.sprite(800,450,'catch1')
                 .play('animenu');*/
-                
+
 
                 /*var frames = [];
     
@@ -185,10 +185,10 @@
                     frameWidth: 53, frameHeight: 14
                 });*/
 
-                this.load.spritesheet('cat_diago','asset/cat_diago.png',
-                {
-                    frameWidth: 38, frameHeight: 57
-                })
+                this.load.spritesheet('cat_diago', 'asset/cat_diago.png',
+                    {
+                        frameWidth: 38, frameHeight: 57
+                    })
                 /*this.load.spritesheet('cat_stop', 'asset/cat_stop.png',
                 {
                     frameWidth: 53, frameHeight: 45
@@ -201,7 +201,7 @@
             }
 
             create() {
-                // Affiche la map
+                // Affiche la map du niveau foret
                 const carteDuNiveau = this.add.tilemap("mapcat");
 
                 //Carte tuile
@@ -394,9 +394,79 @@
                     this.player.setVelocityY(0);
 
                 }
-
             }
         }
+
+        class Cave extends Phaser.Scene {
+            constructor() {
+                super("Cave")
+            }
+
+            preload() {
+
+
+            }
+            create() {
+
+
+            }
+            update() {
+                //this.player.body.velocity.normalise().scale(300) teste de regu diago
+
+                if (this.cursors.left.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(-300)
+                }
+
+
+                else if (this.cursors.left.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(-300)
+                }
+
+                /*permet de créer la vérification des instances de l'objet cursors*/
+                else if (this.cursors.left.isDown) {
+                    this.player.setVelocityX(-300);
+                    //this.player.setFlipX(false);
+                    this.player.setVelocityY(0);
+
+                } else if (this.cursors.right.isDown) {
+                    this.player.setVelocityX(300);
+                    //this.player.setFlipX(true);
+                    this.player.setVelocityY(0);
+
+
+                } else if (this.cursors.up.isDown) {
+                    this.player.setVelocityY(-300);
+                    this.player.setVelocityX(0);
+
+
+                } else if (this.cursors.down.isDown) {
+                    this.player.setVelocityY(300);
+                    this.player.setVelocityX(0);
+                }
+                else {
+                    //this.player.anims.play('stop', true);
+                    this.player.setVelocityX(0);
+                    this.player.setVelocityY(0);
+
+
+                }
+            }
+
+        }
+
+
 
         var config = {
             type: Phaser.AUTO,
