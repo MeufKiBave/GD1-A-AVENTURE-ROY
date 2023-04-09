@@ -239,6 +239,16 @@
                     tileforest,
                 );
 
+                const lightforest = carteDuNiveau.createLayer(
+                    "lightforest",
+                    tileforest,
+                );
+
+                const ombreforest = carteDuNiveau.createLayer(
+                    "ombreforest",
+                    tileforest,
+                );
+
                 const leaf_forest = carteDuNiveau.createLayer(
                     "leaf_forest",
                     tileforest,
@@ -271,7 +281,6 @@
 
                 this.cameras.main.setSize(2560, 1920);
                 /*this.physics.world.setBounds(0, 0, 2560, 1920);
-                
                 this.cameras.main.startFollow(this.player);
                 this.cameras.main.setZoom(1.5);*/
 
@@ -370,12 +379,12 @@
                 /*permet de créer la vérification des instances de l'objet cursors*/
                 else if (this.cursors.left.isDown) {
                     this.player.setVelocityX(-300);
-                    //this.player.setFlipX(false);
+
                     this.player.setVelocityY(0);
 
                 } else if (this.cursors.right.isDown) {
                     this.player.setVelocityX(300);
-                    //this.player.setFlipX(true);
+
                     this.player.setVelocityY(0);
 
 
@@ -397,9 +406,102 @@
             }
         }
 
-        class Cave extends Phaser.Scene {
+        class Cave extends Phaser.Scene { //deuxieme niveau
             constructor() {
                 super("Cave")
+            }
+
+            preload() {
+                //Chargement du cat
+                /*this.load.spritesheet('cat_right_left', 'asset/cat_right_left.png',
+                {
+                    frameWidth: 38, frameHeight: 64
+                });
+                this.load.spritesheet('cat_up_down','asset/cat_up_down.png',
+                {
+                    frameWidth: 53, frameHeight: 14
+                });*/
+
+                this.load.spritesheet('cat_diago', 'asset/cat_diago.png',
+                    {
+                        frameWidth: 38, frameHeight: 57
+                    })
+                /*this.load.spritesheet('cat_stop', 'asset/cat_stop.png',
+                {
+                    frameWidth: 53, frameHeight: 45
+                });*/
+
+                //   this.load.image("background_1","asset/Background_1.bmp")
+                //   this.load.image("background","asset/Background.bmp")
+                this.load.image("placehordre zelda00", "placehordre zelda00.png");
+                this.load.tilemapTiledJSON("grottetilemap", "grotte/grottetilemap.json");
+
+            }
+            create() {
+                const carteDuNiveau = this.add.tilemap("grottetilemap");
+
+                const tileforest = carteDuNiveau.addTilesetImage(
+                    "placehordre zelda00",
+                    "Jeutuileforest");
+            }
+            update() {
+                //this.player.body.velocity.normalise().scale(300) teste de regu diago
+
+                if (this.cursors.left.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(-300)
+                }
+
+
+                else if (this.cursors.left.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(-300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.down.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(300)
+                }
+
+                else if (this.cursors.right.isDown && this.cursors.up.isDown) {
+                    this.player.setVelocityX(300)
+                    this.player.setVelocityY(-300)
+                }
+
+
+                else if (this.cursors.left.isDown) {
+                    this.player.setVelocityX(-300);
+
+                    this.player.setVelocityY(0);
+
+                } else if (this.cursors.right.isDown) {
+                    this.player.setVelocityX(300);
+
+                    this.player.setVelocityY(0);
+
+
+                } else if (this.cursors.up.isDown) {
+                    this.player.setVelocityY(-300);
+                    this.player.setVelocityX(0);
+
+
+                } else if (this.cursors.down.isDown) {
+                    this.player.setVelocityY(300);
+                    this.player.setVelocityX(0);
+                }
+                else {
+                    //this.player.anims.play('stop', true);
+                    this.player.setVelocityX(0);
+                    this.player.setVelocityY(0);
+
+
+                }
+            }
+        }
+
+        class Undercave extends Phaser.Scene {
+            constructor() {
+                super("Undercave")
             }
 
             preload() {
@@ -463,7 +565,6 @@
 
                 }
             }
-
         }
 
 
